@@ -3,7 +3,8 @@
   hosts: all
 
   vars:
-    awx_helm_dir: /home/rex/awx/helm-awx
+    awx_helm_dir_git: /home/rex/awx/helm-awx
+    awx_helm_dir_helm: /home/rex/awx/
 
   tasks:
 
@@ -11,12 +12,12 @@
       ansible.builtin.shell:
         cmd: git pull 
       args:
-        chdir: "{{ awx_helm_dir }}"
+        chdir: "{{ awx_helm_dir_git }}"
       become_user: rex
 
     - name: Apply helm upgrade
       ansible.builtin.shell:
         cmd: helm upgrade -n awx awx ./helm-awx
       args:
-        chdir: "{{ awx_helm_dir }}"
+        chdir: "{{ awx_helm_dir_helm }}"
       become_user: rex
