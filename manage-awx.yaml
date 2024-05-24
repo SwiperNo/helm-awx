@@ -10,7 +10,7 @@
     - name: Update git after commit
       ansible.builtin.shell:
         cmd: git pull 
-      argss:
+      args:
         chdir: "{{ awx_helm_dir }}"
       become_user: rex
 
