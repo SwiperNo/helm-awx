@@ -16,7 +16,7 @@
 
     - name: Apply helm upgrade
       ansible.builtin.shell:
-        cmd: helm upgrade -n awx ./helm-awx
+        cmd: helm upgrade -n awx awx ./helm-awx
       args:
         chdir: "{{ awx_helm_dir }}"
       become_user: rex
