@@ -1,0 +1,22 @@
+---
+- name: Apply source control for AWX
+  hosts: all
+
+  vars:
+    awx_helm_dir: home/rex/awx/helm-awx
+
+  tasks:
+
+    - name: Update git after commit
+      ansible.builtin.shell:
+        cmd: git pull 
+      argss:
+        chdir: "{{ awx_helm_dir }}"
+      become_user: rex
+
+    - name: Apply helm upgrade
+      ansible.builtin.shell:
+        cmd: helm upgrade -n awx ./helm-awx
+      args:
+        chdir: "{{ awx_helm_dir }}"
+      become_user: rex
