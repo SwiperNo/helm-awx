@@ -3,7 +3,7 @@
   hosts: all
 
   vars:
-    awx_helm_dir: home/rex/awx/helm-awx
+    awx_helm_dir: /home/rex/awx/helm-awx
 
   tasks:
 
